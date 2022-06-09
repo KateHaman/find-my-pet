@@ -117,5 +117,37 @@ function initAutocomplete(map, marker) {
 
 }
 
+function initLostPetsMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 18,
+    center: {lat: 49.427673, lng: 32.050320},
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDoubleClickZoom: true,
+    mapTypeControl: false,
+    streetViewControl: false,
+  });
 
+  const lost_pets = document.querySelectorAll("div.lost-pet-card");
 
+  lost_pets.forEach(lost_pet => {
+    const marker = new google.maps.Marker({
+      position: {
+        lat: Number(lost_pet.getAttribute("data-latitude")),
+        lng: Number(lost_pet.getAttribute("data-longitude"))
+      },
+      map: map
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: lost_pet.getAttribute("data-name"),
+    });
+
+    marker.addListener("click", () => {
+      infoWindow.open({
+        anchor: marker,
+        map,
+        shouldFocus: false,
+      });
+    });
+  })
+}

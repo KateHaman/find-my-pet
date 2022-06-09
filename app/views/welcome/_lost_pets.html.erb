@@ -1,7 +1,12 @@
 <% if @lost_posts.any? %>
   <h4 class="mt-4 mb-4 text-center">RECENTLY LOST PETS</h4>
   <% @lost_posts.each do |lost_post| %>
-    <div class="card mb-3 border border-dark">
+    <div
+      class="card mb-3 border border-dark lost-pet-card"
+      data-name="<%= lost_post.place.name %>"
+      data-latitude="<%= lost_post.place.latitude %>"
+      data-longitude="<%= lost_post.place.longitude %>"
+    >
       <div class="d-flex flex-row-reverse">
         <div class="avatar col-3">
           <% if lost_post.pet.avatar.attached? %>
