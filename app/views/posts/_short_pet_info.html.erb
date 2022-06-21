@@ -4,7 +4,9 @@
   <% if @post.pet.breed? %><b><%= t('.breed') %>:</b> <%= @post.pet.breed %>
   <% end %></h6>
 <h6><b><%= t('.sex') %>:</b> <%= @post.pet.sex %></h6>
-<h6><b><%= t('.age') %>:</b> <%= age(@post.pet) %></h6>
+<% if @post.pet.date_of_birth %>
+  <h6><b><%= t('.age') %>:</b> <%= age(@post.pet) %></h6>
+<% end %>
 <h6>
   <% if @post.pet.sterilized? %><b><%= t('welcome.lost_pets.sterile') %></b>
   <% end %></h6>
@@ -12,8 +14,8 @@
 <h6 style="word-wrap: break-word;">
   <% if @post.pet.additional_info? %><b><%= t('.addInfo') %>:</b> <%= @post.pet.additional_info %>
   <% end %></h6>
-<% if @post.category.name == 'lost_pets' %>
-  <h6><b><%= t('.dateLost') %></b> <%= @post.date %>.</h6>
-<% elsif @post.category.name == 'found_pets' %>
-  <h6><b><%= t('.foundDate') %></b> <%= @post.date %>.</h6>
+<% if @post.category.name == 'lost_pets' && @post.date != nil %>
+  <h6><b><%= t('.dateLost') %></b> <%= @post.date.to_time.strftime('%B %e, %Y') %>.</h6>
+<% elsif @post.category.name == 'found_pets' && @post.date != nil %>
+  <h6><b><%= t('.foundDate') %></b> <%= @post.date.to_time.strftime('%B %e, %Y') %>.</h6>
 <% end %>

@@ -1,46 +1,53 @@
 <% provide(:page_title, 'Pet Profile') %>
 <% provide(:profile_active, 'active') %>
 
-<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-between mt-5">
+<% if current_user == @user %>
+  <div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-between mt-5">
+<% else %>
+  <div class="d-flex flex-column flex-lg-row justify-content-start mt-5">
+<% end %>
 
-  <div class="col-12 col-lg-4 pe-5">
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3' %>
-    <% else %>
-      <%= image_tag("avatar.png", style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3') %>
-    <% end %>
+<div class="col-12 col-lg-4 pe-lg-5 pe-0">
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar, style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3' %>
+  <% else %>
+    <%= image_tag("avatar.png", style: 'width: 100%; object-fit: cover;', class: 'border border-dark rounded-3') %>
+  <% end %>
+  <% if current_user.id == @user.id %>
     <div class="actions mt-4">
       <%= link_to t('.editProfile'), edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
       <%= link_to 'Add Contact Info', edit_user_registration_path, class: 'btn btn-outline-dark w-100 mb-2' %>
       <%= link_to t('.destroyProfile'), registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-dark w-100 mb-2' %>
     </div>
+  <% end %>
+</div>
+
+<div class="col-12 col-lg-4">
+  <%= render 'pets/pets' %>
+  <% if current_user.id == @user.id %>
+    <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
+    <div class="mt-4 mb-4" , id="pet-container">
+      <%= render 'pets/form' %>
+    </div>
+    </div>
+  <% end %>
+
+  <% if current_user.id == @user.id %>
+    <div class="col-12 col-lg-4 ps-lg-5 ps-0 ">
+      <%= link_to t('.lostPost'), new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.foundPost'), new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.adoptPost'), new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.successPost'), new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>
+      <%= link_to t('.recommendationPost'), new_post_path(category_id: 12), class: 'btn btn-outline-dark w-100 mb-2' %>
+  <% end %>
+  </div>
+  </div>
   </div>
 
-  <div class="col-12 col-lg-4">
-    <%= render 'pets/pets' %>
-    <% if current_user.id == @user.id %>
-      <%= link_to t('.addPet'), user_path, class: 'fa-solid fa-circle-plus text-dark text-decoration-none pet-form-display mb-2 mt-2' %>
-      <div class="mt-4 mb-4" , id="pet-container">
-        <%= render 'pets/form' %>
-      </div>
-      </div>
-    <% end %>
-
-    <% if current_user.id == @user.id %>
-      <div class="col-12 col-lg-4 ps-5">
-        <%= link_to t('.lostPost'), new_post_path(category_id: 8), class: 'btn btn-outline-dark w-100 mb-2' %>
-        <%= link_to t('.foundPost'), new_post_path(category_id: 9), class: 'btn btn-outline-dark w-100 mb-2' %>
-        <%= link_to t('.adoptPost'), new_post_path(category_id: 10), class: 'btn btn-outline-dark w-100 mb-2' %>
-        <%= link_to t('.successPost'), new_post_path(category_id: 11), class: 'btn btn-outline-dark w-100 mb-2' %>
-        <%= link_to t('.recommendationPost'), new_post_path(category_id: 12), class: 'btn btn-outline-dark w-100 mb-2' %>
-    <% end %>
-    </div>
-    </div>
-
-<script>document.querySelectorAll('.pet-form-display').forEach((el) => {
-    el.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        el.nextElementSibling.style = 'display: block'
-    })
-})
-</script>
+  <script>document.querySelectorAll('.pet-form-display').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          el.nextElementSibling.style = 'display: block'
+      })
+  })
+  </script>

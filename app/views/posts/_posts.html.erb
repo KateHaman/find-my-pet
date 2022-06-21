@@ -21,7 +21,7 @@
             <%= t('.ago') %></p>
           <h5 class="card-title fw-bold text-center p-0 m-0"><%= post.title %></h5>
           <p class="card-text"><%= truncate(strip_tags(post.content.to_s), length: 100, omission: '...') %><br>
-            <% if post.pet.lost? || post.pet.found? %><b><%= t('.lostPlace') %>:</b> <%= post.place.name unless post.place.nil? %><br><b><%= t('.lostDate') %>:</b> <%= post.date %>
+            <% if post.pet.lost? || post.pet.found? %><b><%= t('.lostPlace') %>:</b> <%= post.place.name unless post.place.nil? %><br><b><%= t('.lostDate') %>:</b> <%= post.date.to_time.strftime('%B %e, %Y') unless post.date.nil? %>
             <% end %></p>
         </div>
       <% end %>

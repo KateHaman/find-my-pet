@@ -9,13 +9,19 @@ module GoogleMapsHelper
     javascript_include_tag "google_maps#{idMap}"
   end
 
-  private
-
-  def google_maps_source(idMap)
-    "https://maps.googleapis.com/maps/api/js?key=#{google_maps_key}&region=UK&language=uk&callback=initMap#{'&libraries=places' if idMap == '_posts'}"
+  def google_content(text)
+    "<![CDATA[" + raw(text)
+    # raw(text).gsub('<', '&lt;').gsub('>', '&gt;')
   end
 
+  private
+  
+  def google_maps_source(idMap)
+    "https://maps.googleapis.com/maps/api/js?key=#{google_maps_key}&region=UK&language=#{t('language')}&callback=initMap#{"&libraries=places" if idMap == "_posts"}"
+  end
+  
   def google_maps_key
+    # Rails.application.credentials.fetch(:google_api_key)
     Rails.application.credentials.dig(:google, :api_key)
   end
 end

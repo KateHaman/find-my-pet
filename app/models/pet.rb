@@ -18,8 +18,7 @@
 #  status          :integer          default("home"), not null
 #
 class Pet < ApplicationRecord
-  extend FriendlyId
-  friendly_id :slug_candidates, use: %i[slugged finders]
+  include Friendable
 
   belongs_to :user
   has_many :posts, dependent: :destroy

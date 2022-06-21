@@ -8,11 +8,17 @@
 
 <div id="map-index">
   <div hidden>
-    <% Place.all.each do |place| %>
+    <% Post.all.each do |post|
+      next if post.place.nil? %>
       <div
-        class="card mb-3 border border-dark lost-pet-card"
-        data-latitude="<%= place.latitude %>"
-        data-longitude="<%= place.longitude %>">
+        class="card mb-3 border border-dark pet-card"
+        data-id="<%= post.id %>"
+        data-latitude="<%= post.place.latitude %>"
+        data-longitude="<%= post.place.longitude %>"
+        data-name="<%= post.title %>"
+        data-content="<%= google_content post.content %>"
+        data-category="<%= post.category_id %>"
+        data-species="<%= post.pet.species %>">
       </div>
     <% end %>
   </div>
@@ -42,7 +48,7 @@
 <% end %>
 
 <div class="success-stories-section" style="background-color: #ffe5d9;">
-    <%= render 'success_stories' %>
+  <%= render 'success_stories' %>
 </div>
 
 <div class="recently-lost-pets">

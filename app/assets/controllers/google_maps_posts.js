@@ -11,6 +11,7 @@ function initMap() {
         streetViewControl: false,
     };
 
+
     const map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -34,9 +35,29 @@ function initMap() {
     });
     map.addListener("dblclick", (e) => {
         marker.setPosition(e.latLng);
+        setDataDocument(marker);
     });
 
     initAutocomplete(map, marker);
+}
+
+function setDataDocument(marker) {
+    document.getElementById("post_place_latitude").value = marker.getPosition().lat();
+    document.getElementById("post_place_longitude").value = marker.getPosition().lng();
+
+    const geocoder = new google.maps.Geocoder();
+    const latlng = {
+        lat: marker.getPosition().lat(),
+        lng: marker.getPosition().lng(),
+    };
+
+    geocoder
+        .geocode({location: latlng})
+        .then((response) => {
+            if (response.results[0]) {
+                document.getElementById("post_place_name").value = response.results[0].formatted_address;
+            }
+        });
 }
 
 function initAutocomplete(map, marker) {
@@ -72,8 +93,7 @@ function initAutocomplete(map, marker) {
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
 
-        document.getElementById("post_place_latitude").value = marker.getPosition().lat();
-        document.getElementById("post_place_longitude").value = marker.getPosition().lng();
+        dsetDataDocument(marker);
 
     });
 

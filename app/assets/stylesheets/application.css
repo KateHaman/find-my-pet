@@ -94,3 +94,7 @@ a:active {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
 }
+
+.posted-by {
+    font-size: 12px;
+}
