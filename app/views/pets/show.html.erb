@@ -56,7 +56,7 @@
 
     <p class="mb-2 ms-4">
       <b><%= t('.species') %></b>
-      <%= @pet.species %>
+      <%= t('enum.species.'.concat(@pet.species)) %>
     </p>
 
     <p class="mb-2 ms-4">
@@ -68,16 +68,12 @@
 
     <p class="mb-2 ms-4">
       <b><%= t('.sex') %></b>
-      <%= @pet.sex %>
+      <%= t('enum.sex.'.concat(@pet.sex)) %>
     </p>
 
     <p class="mb-2 ms-4">
       <b><%= t('.sterile') %></b>
-      <% if @pet.sterilized? %>
-        <%= t('.yes') %>
-      <% else %>
-        <%= t('.no') %>
-      <% end %>
+      <%= t(@pet.sterilized?.to_s) %>
     </p>
 
     <% if @pet.date_of_birth? %>

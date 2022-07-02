@@ -18,7 +18,7 @@ function initMap() {
         if (position.coords === undefined) {
             return;
         }
-        var latLng = {
+        const latLng = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
         };

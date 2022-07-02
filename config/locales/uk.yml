@@ -2,6 +2,8 @@ uk:
   language: "uk"
   en: "English"
   uk: "Українська"
+  true: Так
+  false: Ні
 
   users:
     show:
@@ -60,9 +62,6 @@ uk:
         Зберегти
       cancel:
         Відмінити
-      male: самець
-      female: самиця
-      preferNotSay: невідомо
       color: Колір
       addInfo: Додаткова інформація
     destroy:
@@ -113,8 +112,6 @@ uk:
         Стать:
       sterile: >
         Стерилізований(а):
-      yes: так
-      no: ні
       dateOfBirth: >
         Дата Народження:
       color: >
@@ -168,6 +165,10 @@ uk:
       moreFriends: Знайти більше друзів
       adoptPet: Взяти улюбленця
     index:
+      foundСat: знайдена кішка
+      foundDog: знайдений пес
+      lostCat: загублена кішка
+      lostDog: загублений пес
       looking_html: ШУКАЄШ ДРУЗІВ?
       would_html: ХОЧЕТЕ ВЗЯТИ УЧАСТЬ У ПОШУКУ ДОМАШНІХ ТВАРИН?
       start: Розпочати
@@ -190,6 +191,7 @@ uk:
       master: >
         господарем:
       more_info: Дізнатися більше
+      help_pet: Допомогти у пошуках
       get_more_info: Дізнатися більше
       find_pet: Знайти мого улюбленця
       map: Переглянути мапу
@@ -217,6 +219,8 @@ uk:
       post_hint: На сторінці профіля можна створити свій власний пост.
     posts:
       ago: тому
+      lostPlace: Місце, де улюбленець загубився
+      lostDate: Дата, коли улюбленець загубився
     short_pet_info:
       petInfo: >
         Коротко про улюбленця:
@@ -270,6 +274,8 @@ uk:
       done: Це можна зробити на Вашій
       profile: сторінці профіля.
     form:
+      recommendationInfo: Вимаєте додати хоча б одного улюбленця, щоб ділитися рекомендаціями. Це можна зробити на Вашій
+      profile: сторінці профіля
       recommendation: >
         Надайте рекомендацію:
       recommendationName: >
@@ -399,6 +405,10 @@ uk:
     species:
       cat: Кішка
       dog: Песик
+    sex:
+      male: Самець
+      female: Самка
+      undefined: Невідомо
  
   notification_mailer:
     user_created:

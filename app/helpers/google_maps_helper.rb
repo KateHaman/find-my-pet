@@ -1,4 +1,5 @@
 module GoogleMapsHelper
+
   def google_maps_tag(idMap = '')
     javascript_include_tag google_maps_source(idMap),
                            async: true,
@@ -11,7 +12,6 @@ module GoogleMapsHelper
 
   def google_content(text)
     '<![CDATA[' + raw(text)
-    # raw(text).gsub('<', '&lt;').gsub('>', '&gt;')
   end
 
   private

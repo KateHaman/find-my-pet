@@ -34,6 +34,9 @@ en:
   en: "English"
   uk: "Українська"
 
+  true: Yes
+  false: No
+
   users:
     show:
       createPost: Create a Post
@@ -58,7 +61,7 @@ en:
       descr_html: >
         At the moment you`ve got no pets added. <br>
         To add your pet, click on the button above.
-      yourpets_html: >
+      yourPets_html: >
         Your pets:
       petFound: My Pet was Found
       masterFound: Pet Master was Found
@@ -90,9 +93,6 @@ en:
         Save Pet
       cancel:
         Cancel
-      male: male
-      female: female
-      preferNotSay: unknown
       color: Color
       addInfo: Additional Info
     destroy:
@@ -143,8 +143,6 @@ en:
         Gender:
       sterile: >
         Is sterilized:
-      yes: yes
-      no: no
       dateOfBirth: >
         Date of Birth:
       color: >
@@ -197,6 +195,10 @@ en:
       moreFriends: Find More Friends
       adoptPet: Adopt a Pet
     index:
+      foundСat: found cat
+      foundDog: found dog
+      lostCat:  lost cat
+      lostDog: lost dog
       looking_html: LOOKING FOR FRIENDS?
       would_html: WOULD LIKE TO TAKE PART IN PETS SEARCHING?
       start: Get Started
@@ -218,6 +220,7 @@ en:
       contact_info: If you`ve seen this pet, please contact its
       master: master
       more_info: Get more Info
+      help_pet: Help to Find a Pet
       get_more_info: Find out More
       find_pet: Find my Pet
       map: View Lost Pets Map
@@ -245,6 +248,8 @@ en:
       post_hint: You can create your own post on your profile page.
     posts:
       ago: ago
+      lostPlace: The place where the pet was lost
+      lostDate: The date when the pet was lost
     short_pet_info:
       petInfo: >
         Short Pet Info:
@@ -299,6 +304,9 @@ en:
       done: This can be done on your
       profile: profile page.
     form:
+      recommendationInfo: You have to add at least one pet to share recommendations. This can be done on your
+      profile: profile page
+      shareRecommendation: Please share recommendation
       recommendation: >
         Provide Recommendation:
       recommendationName: >
@@ -430,6 +438,10 @@ en:
     species:
       cat: Cat
       dog: Dog
+    sex:
+      male: Male
+      female: Female
+      undefined: Undefined
 
   notification_mailer:
     user_created:

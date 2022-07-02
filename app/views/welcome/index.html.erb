@@ -28,8 +28,7 @@
   </div>
 </div>
 <div style="background-color: #ffe5d9;">
-  <p class="text-center mt-2 mb-2"><%= image_tag("catGreen.png") %> found cat   <%= image_tag("dogGreen.png") %>  found
-    dog   <%= image_tag("catRed.png") %> lost cat   <%= image_tag("dogRed.png") %> lost dog </p>
+  <p class="text-center mt-2 mb-2"><%= image_tag("catGreen.png") %> <%= t('.foundСat') %>   <%= image_tag("dogGreen.png") %> <%= t('.foundDog') %>   <%= image_tag("catRed.png") %> <%= t('.lostCat') %>   <%= image_tag("dogRed.png") %> <%= t('.lostDog') %> </p>
 </div>
 
 <% unless signed_in? %>

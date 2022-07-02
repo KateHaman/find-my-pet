@@ -24,3 +24,7 @@ require("jquery-mask-plugin")
 $.jMaskGlobals.watchDataMask = true;
 
 import "controllers"
+
+// onpopstate = event => {
+//     location.reload(false);
+// };

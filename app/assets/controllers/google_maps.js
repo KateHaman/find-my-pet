@@ -12,7 +12,7 @@ function initMap() {
     };
 
     // Create a map in the #map HTML element, using the declared options
-    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    const mapG = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     navigator.geolocation.getCurrentPosition((position) => {
         if (position.coords === undefined) {
@@ -24,9 +24,9 @@ function initMap() {
         };
         new google.maps.Marker({
             position: latLng,
-            map: map,
+            map: mapG,
         });
-        map.setCenter(latLng);
+        mapG.setCenter(latLng);
     });
 
     const infowindow = new google.maps.InfoWindow();
@@ -52,19 +52,22 @@ function initMap() {
                 lng: Number(pet.getAttribute("data-longitude"))
             },
             icon: icons[iconId],
-            map: map,
+            map: mapG,
             title: pet.getAttribute("data-name"),
             optimized: true,
             zIndex: 3
         });
 
-        const contentString =
-            '<div id="content">' +
-            '<a href="/posts/' + pet.getAttribute("data-id") + '">' + pet.getAttribute("data-name") + '</a>' +
-            '<div>' +
-            pet.getAttribute("data-content") +
-            '</div>' +
-            '</div>';
+        let id = pet.getAttribute("data-id");
+        let name = pet.getAttribute("data-name");
+        let content = pet.getAttribute("data-content");
+        const contentString = `
+            <div id="content">
+                <a href="/posts/${id}">${name}</a>
+                <div>
+                    ${content}
+                 </div>
+            </div>`;
         mapMarkers.set(marker, contentString);
 
         marker.addListener('click', () => {

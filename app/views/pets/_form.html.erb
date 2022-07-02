@@ -18,9 +18,9 @@
 
   <div class="field">
     <p class="mb-0"><b><%= t('.select_html') %></b></p>
-    <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('.male') %></p>
-    <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('.female') %></p>
-    <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('.preferNotSay') %></p>
+    <p class="mb-0"><%= form.radio_button :sex, 'male', required: true, class: 'form-check-input me-2' %> <%= t('enum.sex.male') %></p>
+    <p class="mb-0"><%= form.radio_button :sex, 'female', class: 'form-check-input me-2' %> <%= t('enum.sex.female') %></p>
+    <p class="mb-0"><%= form.radio_button :sex, 'undefined', class: 'form-check-input me-2' %> <%= t('enum.sex.undefined') %></p>
     <p class="mb-2">* <%= t('devise.registrations.new.required') %></p>
   </div>
 
